@@ -2,12 +2,19 @@ const express = require('express')
 const router = express.Router()
 
 router.get('/', (req, res) => {
+  res.setHeader('X-Timestamp', Date.now())
   let message = req.query.message
+  const lang = req.headers['x-lang']
+
   if(message === '') {
     res.status(400)
-    message = 'message の値が不正です。'
+    if(lang === 'en') {
+      message = 'message is empty.'
+    } else {
+      message = 'message の値が不正です。'
+    }  
   }
-  
+
   res.send({ message })
 })
 
