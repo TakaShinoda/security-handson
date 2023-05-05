@@ -19,7 +19,10 @@ app.get("/csp", (req, res) => {
   const nonceValue = crypto.randomBytes(16).toString("base64")
   res.header(
     "Content-Security-Policy",
-    `script-src 'nonce-${nonceValue}' 'strict-dynamic'`)
+    `script-src 'nonce-${nonceValue}' 'strict-dynamic';` + 
+    "object-src 'none';" +
+    "base-uri 'node';"
+  )
   res.render("csp", { nonce: nonceValue })
 })
 
