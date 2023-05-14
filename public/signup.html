@@ -13,11 +13,19 @@
         <legend class="form-action">アカウント作成</legend>
         <div>
           <label for="username">メールアドレス</label>
-          <input type="text" name="username" id="username" class="signup-input" />
+          <input type="email" name="username" id="username" class="signup-input" required />
         </div>
         <div>
           <label for="password">パスワード</label>
-          <input type="text" name="password" id="password" class="signup-input" />
+          <input 
+            type="password"
+            name="password"
+            id="password"
+            class="signup-input"
+            required
+            pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$"
+            title="パスワードには8文字以上の英数字を入力してください" 
+          />
         </div>
         <p>
           <small>パスワードには8文字以上の英数字を入力してください</small>
